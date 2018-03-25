@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="main" style="width: 50%; margin: 0 auto; padding-top: 50px;">
+
+    <span style="font-size: 25px; font-weight: bold;">Results :</span><BR><BR>
+
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>date_released</th>
+            <th>genre</th>
+            <th>rating</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for category in categories %}
+
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>{{ category.date_released|date('Y-m-d H:i:s') }}</td>
+            <td>{{ category.genre }}</td>
+            <td>{{ category.rating }}</td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+    <script>
+
+        $(document).ready(function() {
+            $('#example').dataTable( {
+                "searching": false,
+                "ordering": false
+            } );
+        } );
+    </script>
+
+{% endblock %}
